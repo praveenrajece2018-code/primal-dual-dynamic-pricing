@@ -174,3 +174,7 @@ primal-dual-dynamic-pricing/
 │
 └── src/
     └── README.md
+
+## License
+
+This repository is shared under an Academic and Portfolio Use License. See the `LICENSE` file for details.
