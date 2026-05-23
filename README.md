@@ -78,3 +78,25 @@ primal-dual-dynamic-pricing/
 │
 └── src/
     └── README.md
+
+## Visual Results
+
+### Exploration Phase: Price vs Demand
+
+Customer Type 1:
+
+![Exploration Price vs Demand - Customer Type 1](images/exploration_price_demand_customer_type_1.png)
+
+Customer Type 2:
+
+![Exploration Price vs Demand - Customer Type 2](images/exploration_price_demand_customer_type_2.png)
+
+### Final Revenue Analysis
+
+Customer Type 1:
+
+![Final Price vs Revenue - Customer Type 1](images/final_price_revenue_customer_type_1.png)
+
+Customer Type 2:
+
+![Final Price vs Revenue - Customer Type 2](images/final_price_revenue_customer_type_2.png)
