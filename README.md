@@ -2,50 +2,133 @@
 
 ## Project Overview
 
-This project implements a Primal-Dual Learning Algorithm for personalized dynamic pricing under inventory constraints. The goal is to optimize pricing decisions when customer demand curves are unknown and inventory is limited.
+This project implements a **Primal-Dual Learning Algorithm for personalized dynamic pricing under inventory constraints**. The objective is to optimize pricing decisions when customer demand curves are unknown and inventory is limited.
 
 The project is motivated by a telecommunications use case where excess GPU capacity in Radio Access Network infrastructure can be monetized through dynamic pricing. The algorithm learns demand behavior during an exploration phase and then applies inventory-aware pricing decisions during an exploitation phase.
 
+The implementation is developed in Python using a Jupyter Notebook and evaluates the algorithm using simulated customer demand, dual variable estimation, Random Forest-based demand prediction, revenue calculation, and regret analysis.
+
+---
+
 ## Problem Statement
 
-A provider has limited GPU inventory and needs to sell compute instances to different customer types. Demand is uncertain and price-sensitive, so the system must learn demand curves while maximizing revenue and avoiding inventory overuse.
+A provider has limited GPU inventory and needs to sell compute instances to different customer types. Demand is uncertain and price-sensitive, so the system must learn customer demand curves while maximizing revenue and avoiding inventory overuse.
 
 The main challenge is balancing:
 
 - Revenue maximization
-- Inventory constraints
+- Limited inventory capacity
 - Unknown customer demand
 - Different customer types
 - Exploration versus exploitation
+- Inventory-aware price adjustment
+
+---
+
+## Business Context
+
+In a telecommunications environment, Radio Access Network infrastructure may contain GPU resources used for internal AI-enhanced network operations. During off-peak periods, part of this compute capacity may be available for external customers.
+
+The provider must decide:
+
+- What price to offer
+- Which customer type to target
+- How much inventory to allocate
+- When to increase or decrease prices
+- How to avoid selling too much limited capacity too early
+
+This makes the problem suitable for a dynamic pricing and revenue management approach.
+
+---
 
 ## Methodology
 
-The implementation follows a two-phase Primal-Dual Learning framework.
+The project follows a two-phase **Primal-Dual Learning framework**.
 
 ### Phase 1: Exploration
 
-- Tests different prices for each customer type
-- Observes customer demand at different price points
-- Estimates demand probabilities
-- Calculates the dual variable, representing the shadow price of inventory
-- Identifies optimal prices and refines price intervals
+The exploration phase focuses on learning customer demand behavior and estimating the value of inventory.
+
+Main steps:
+
+- Test different prices for each customer type
+- Observe customer buying behavior
+- Estimate demand probabilities
+- Calculate the dual variable, representing the shadow price of inventory
+- Identify optimal prices for each customer type
+- Refine price intervals around the best-performing prices
 
 ### Phase 2: Exploitation
 
-- Uses learned demand estimates to project future demand
-- Compares expected demand with remaining inventory
-- Adjusts prices based on inventory sufficiency
-- Calculates revenue and regret against an oracle benchmark
+The exploitation phase uses the learned demand estimates to make pricing decisions while considering remaining inventory.
+
+Main steps:
+
+- Use learned prices from the exploration phase
+- Estimate future demand at the selected price
+- Compare projected demand with remaining inventory
+- Continue with the optimal price if inventory is sufficient
+- Adjust prices upward or downward if inventory is constrained
+- Calculate revenue, oracle revenue, and regret
+
+---
+
+## Algorithm Components
+
+### 1. Demand Generation
+
+Customer demand is simulated using logistic demand curves. The demand probability decreases as price increases, representing realistic price-sensitive customer behavior.
+
+Two customer types are modeled:
+
+- **Customer Type 1:** Reserved customers
+- **Customer Type 2:** Preemptive customers
+
+Each customer type has different price sensitivity and willingness-to-pay behavior.
+
+### 2. Dual Variable Estimation
+
+The dual variable represents the marginal value of one additional unit of inventory. It helps the algorithm make pricing decisions that consider both immediate revenue and inventory scarcity.
+
+A higher dual variable indicates that inventory is becoming scarce, so the algorithm becomes more conservative in pricing and allocation decisions.
+
+### 3. Demand Estimation using Random Forest
+
+A Random Forest classifier is used to estimate buying probability based on observed price-demand data.
+
+The model helps estimate:
+
+- Probability of purchase at a given price
+- Future demand during exploitation
+- Inventory pressure under different pricing decisions
+
+### 4. Revenue and Regret Analysis
+
+The algorithm calculates:
+
+- Actual revenue generated by the pricing policy
+- Oracle benchmark revenue
+- Regret, which measures the gap between the algorithm and the ideal oracle solution
+
+Lower regret indicates better algorithm performance.
+
+---
 
 ## Key Features
 
-- Simulated demand generation using logistic demand curves
-- Customer-type-specific demand behavior
+- Simulated customer demand using logistic demand curves
+- Multi-customer-type dynamic pricing
+- Primal-dual learning framework
 - Dual variable estimation using numerical optimization
-- Demand estimation using Random Forest classification
-- Inventory-aware dynamic pricing
-- Revenue and regret calculation
-- Visualization of price-demand and price-revenue relationships
+- Random Forest-based demand estimation
+- Exploration and exploitation phase implementation
+- Inventory-aware price adjustment
+- Revenue calculation
+- Oracle benchmark comparison
+- Regret analysis
+- Visual analysis of price-demand and price-revenue relationships
+
+---
 
 ## Technologies Used
 
@@ -59,6 +142,8 @@ The implementation follows a two-phase Primal-Dual Learning framework.
 - Random Forest Classifier
 - Numerical Optimization
 
+---
+
 ## Repository Structure
 
 ```text
@@ -69,34 +154,23 @@ primal-dual-dynamic-pricing/
 ├── .gitignore
 │
 ├── notebooks/
+│   ├── README.md
 │   └── primal_dual_algo.ipynb
 │
 ├── reports/
+│   ├── README.md
 │   └── project_report.pdf
 │
 ├── images/
+│   ├── README.md
+│   ├── exploration_price_demand_customer_type_1.png
+│   ├── exploration_price_demand_customer_type_2.png
+│   ├── sorted_price_demand_customer_type_1_with_z_opt.png
+│   ├── sorted_price_demand_customer_type_2_with_z_opt.png
+│   ├── sorted_price_revenue_customer_type_1_with_z_opt.png
+│   ├── sorted_price_revenue_customer_type_2_with_z_opt.png
+│   ├── price_trend_customer_type_1.png
+│   └── price_trend_customer_type_2.png
 │
 └── src/
     └── README.md
-
-## Visual Results
-
-### Exploration Phase: Price vs Demand
-
-Customer Type 1:
-
-![Exploration Price vs Demand - Customer Type 1](images/exploration_price_demand_customer_type_1.png)
-
-Customer Type 2:
-
-![Exploration Price vs Demand - Customer Type 2](images/exploration_price_demand_customer_type_2.png)
-
-### Final Revenue Analysis
-
-Customer Type 1:
-
-![Final Price vs Revenue - Customer Type 1](images/final_price_revenue_customer_type_1.png)
-
-Customer Type 2:
-
-![Final Price vs Revenue - Customer Type 2](images/final_price_revenue_customer_type_2.png)
