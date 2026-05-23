@@ -152,6 +152,7 @@ primal-dual-dynamic-pricing/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
+├── LICENSE
 │
 ├── notebooks/
 │   ├── README.md
@@ -174,6 +175,211 @@ primal-dual-dynamic-pricing/
 │
 └── src/
     └── README.md
+```
+
+---
+
+## Visual Results
+
+### Exploration Phase: Price vs Demand
+
+The exploration phase tests different prices and observes demand behavior for each customer type.
+
+#### Customer Type 1: Reserved Customers
+
+![Exploration Price vs Demand - Customer Type 1](images/exploration_price_demand_customer_type_1.png)
+
+#### Customer Type 2: Preemptive Customers
+
+![Exploration Price vs Demand - Customer Type 2](images/exploration_price_demand_customer_type_2.png)
+
+---
+
+### Final Demand Analysis with Dual Variable
+
+These plots show the final relationship between price and demand after applying the primal-dual learning logic with the estimated dual variable.
+
+#### Customer Type 1
+
+![Sorted Price vs Demand - Customer Type 1 with z_opt](images/sorted_price_demand_customer_type_1_with_z_opt.png)
+
+#### Customer Type 2
+
+![Sorted Price vs Demand - Customer Type 2 with z_opt](images/sorted_price_demand_customer_type_2_with_z_opt.png)
+
+---
+
+### Final Revenue Analysis with Dual Variable
+
+The final revenue plots show how revenue changes across price points after applying the primal-dual learning approach.
+
+#### Customer Type 1
+
+![Sorted Price vs Revenue - Customer Type 1 with z_opt](images/sorted_price_revenue_customer_type_1_with_z_opt.png)
+
+#### Customer Type 2
+
+![Sorted Price vs Revenue - Customer Type 2 with z_opt](images/sorted_price_revenue_customer_type_2_with_z_opt.png)
+
+---
+
+### Price Trend Across Customers
+
+These plots show how pricing decisions evolve across customer arrivals.
+
+#### Customer Type 1
+
+![Price Trend Across Customers - Customer Type 1](images/price_trend_customer_type_1.png)
+
+#### Customer Type 2
+
+![Price Trend Across Customers - Customer Type 2](images/price_trend_customer_type_2.png)
+
+---
+
+## Results Summary
+
+The implemented algorithm was evaluated using simulated multi-type customer demand. The results show that the primal-dual learning approach can adapt prices based on demand behavior and inventory constraints.
+
+Key observations:
+
+- Demand generally decreases as price increases.
+- Different customer types show different price sensitivity.
+- The exploration phase helps identify useful price regions.
+- The dual variable helps account for inventory scarcity.
+- Revenue varies significantly across price points.
+- The algorithm supports inventory-aware pricing decisions under uncertain demand.
+
+---
+
+## How to Run the Project
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/praveenrajece2018-code/primal-dual-dynamic-pricing.git
+```
+
+### 2. Navigate to the Project Folder
+
+```bash
+cd primal-dual-dynamic-pricing
+```
+
+### 3. Install Required Packages
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Open Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+### 5. Run the Notebook
+
+Open and run:
+
+```text
+notebooks/primal_dual_algo.ipynb
+```
+
+---
+
+## Requirements
+
+The project requires the following Python libraries:
+
+```text
+numpy
+pandas
+matplotlib
+scikit-learn
+scipy
+jupyter
+```
+
+These dependencies are listed in the `requirements.txt` file.
+
+---
+
+## Project Report
+
+The full academic project report is available in the `reports/` folder:
+
+```text
+reports/project_report.pdf
+```
+
+The report includes:
+
+- Introduction and industry context
+- Problem formulation
+- Literature review
+- Primal and dual optimization methodology
+- Algorithm explanation
+- Implementation details
+- Demand generation
+- Demand estimation
+- Results and analysis
+- References
+
+---
+
+## Learning Outcomes
+
+Through this project, I strengthened my understanding of:
+
+- Dynamic pricing
+- Revenue management
+- Inventory-constrained optimization
+- Primal-dual algorithms
+- Demand curve learning
+- Exploration-exploitation trade-off
+- Dual variable interpretation
+- Machine learning-based demand estimation
+- Random Forest classification
+- Simulation-based evaluation
+- Regret analysis
+- Data visualization for algorithm performance
+
+---
+
+## Future Improvements
+
+Possible future improvements include:
+
+- Modularizing the notebook into separate Python scripts
+- Adding real-world demand data
+- Extending the model to more customer types
+- Improving demand estimation with additional machine learning models
+- Adding automated experiment tracking
+- Creating a dashboard for pricing and revenue analysis
+- Comparing the primal-dual approach with other pricing algorithms
+- Adding unit tests for key algorithm functions
+
+---
+
+## Authors
+
+This project was completed as part of the **M.Sc. Data Analytics and Decision Science** program at **RWTH Aachen University**.
+
+Project contributors:
+
+- Praveen Balakrishnan
+- Gurusaran Sivakumar
+- Shivam Patil
+- Vijayan Shinde
+
+---
+
+## Acknowledgement
+
+This project was carried out in an academic setting with guidance from RWTH Aachen University and industry collaboration with Vodafone Group Plc.
+
+---
 
 ## License
 
