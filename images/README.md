@@ -1,34 +1,52 @@
-
----
-
-## 3. `images/README.md`
-
-```markdown
 # Images
 
-This folder contains visual outputs and screenshots generated from the project.
+This folder contains visual outputs generated from the Primal-Dual Learning Algorithm implementation.
 
-## Image Types
+The images are used to explain the exploration phase, final demand behavior, revenue analysis, and price trends across customer arrivals.
 
-This folder can include:
+## Image List
 
-- Price vs demand plots
-- Price vs revenue plots
-- Exploration phase visualizations
-- Exploitation phase visualizations
-- Algorithm flowcharts
-- Result screenshots used in the README file
+### Exploration Phase
 
-## Suggested File Names
+- `exploration_price_demand_customer_type_1.png`  
+  Shows the relationship between price and demand probability during the exploration phase for Customer Type 1, representing reserved customers.
 
-Use clear and descriptive names for images, such as:
+- `exploration_price_demand_customer_type_2.png`  
+  Shows the relationship between price and demand probability during the exploration phase for Customer Type 2, representing preemptive customers.
 
-```text
-exploration_customer_type_1.png
-exploration_customer_type_2.png
-price_vs_demand_type_1.png
-price_vs_revenue_type_1.png
-price_vs_demand_type_2.png
-price_vs_revenue_type_2.png
-algorithm_exploration_flowchart.png
-algorithm_exploitation_flowchart.png
+### Final Demand Analysis
+
+- `sorted_price_demand_customer_type_1_with_z_opt.png`  
+  Shows the sorted final price-demand relationship for Customer Type 1 after applying the primal-dual learning logic with the estimated dual variable.
+
+- `sorted_price_demand_customer_type_2_with_z_opt.png`  
+  Shows the sorted final price-demand relationship for Customer Type 2 after applying the primal-dual learning logic with the estimated dual variable.
+
+### Final Revenue Analysis
+
+- `sorted_price_revenue_customer_type_1_with_z_opt.png`  
+  Shows the sorted final price-revenue relationship for Customer Type 1 after applying the primal-dual learning approach.
+
+- `sorted_price_revenue_customer_type_2_with_z_opt.png`  
+  Shows the sorted final price-revenue relationship for Customer Type 2 after applying the primal-dual learning approach.
+
+### Price Trend Across Customers
+
+- `price_trend_customer_type_1.png`  
+  Shows how pricing decisions evolve across customer arrivals for Customer Type 1.
+
+- `price_trend_customer_type_2.png`  
+  Shows how pricing decisions evolve across customer arrivals for Customer Type 2.
+
+## Purpose
+
+These visualizations support the explanation of how the algorithm learns demand behavior, estimates inventory-aware pricing decisions, and evaluates revenue performance under inventory constraints.
+
+## Usage in Main README
+
+The images can be displayed in the main `README.md` file using relative paths.
+
+Example:
+
+```markdown
+![Exploration Price vs Demand - Customer Type 1](images/exploration_price_demand_customer_type_1.png)
